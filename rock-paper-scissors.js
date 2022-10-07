@@ -8,6 +8,21 @@ function getComputerChoice() {
   } else {
   	result = "scissors";
   }
-  document.write(result);
   return result;
+}
+
+function singleRound(playerSelection, computerSelection) {
+
+    if ((playerSelection === "rock" && computerSelection === "scissors")
+         || (playerSelection === "paper" && computerSelection === "rock")
+         || (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+    	alert("You Win!!");
+      } else if ((playerSelection === "rock" && computerSelection === "paper")
+         || (playerSelection === "paper" && computerSelection === "scissors")
+         || (playerSelection === "scissors" && computerSelection === "rock")) {
+         	alert("You Lose!!");
+         } else {
+         	alert ("TIE!!!");
+         }
 }
