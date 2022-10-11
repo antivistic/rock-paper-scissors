@@ -14,12 +14,24 @@
 		<h1>Rock, Paper, Scissors!</h1>
 		<p>The classic! Rock, paper, scissors is considered the oldest hand game in the world, dating back to around 200 BC in the Chinese Han Dynasty!</p>
     </header>
-	<p>To win this game, you must beat the computer best 3 out of 5. Good luck!</p>
-	<button id="startBtn">Begin!</button>
-	<div id="choiceBox" style="display:none">
-		<button class="choiceBtn" value="rock">Rock</button>
-		<button class="choiceBtn" value="paper">Paper</button>
-		<button class="choiceBtn" value="scissors">Scissors</button>
+    <div class="container">
+	    <div class="player-score-container">
+	    	<p>Player</p>
+	    	<p id="player-score">0</p>
+	    </div>
+	    <div class="game-container">
+			<p>To win this game, you must beat the computer best 3 out of 5. Good luck!</p>
+			<button id="startBtn">Begin!</button>
+			<div id="choiceBox" style="display:none">
+				<button class="choiceBtn" value="rock">Rock</button>
+				<button class="choiceBtn" value="paper">Paper</button>
+				<button class="choiceBtn" value="scissors">Scissors</button>
+			</div>
+		</div>
+		<div class="computer-score-container">
+			<p>Computer</p>
+			<p id="computer-score">0</p>
+		</div>
 	</div>
 	<footer>Kyle Schlue - 10/11/2022</footer>
 </body>

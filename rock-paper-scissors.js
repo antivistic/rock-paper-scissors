@@ -30,11 +30,13 @@ function singleRound(playerSelection, computerSelection) {
     ) {
     	    alert("You Win the Round!");
     	    playerWins++;
+    	    document.getElementById('player-score').innerHTML = `<p>${playerWins}</p>`
       } else if ((playerSelection === "rock" && computerSelection === "paper")
          || (playerSelection === "paper" && computerSelection === "scissors")
          || (playerSelection === "scissors" && computerSelection === "rock")) {
          	alert("You Lose the Round!");
          	computerWins++;
+         	document.getElementById('computer-score').innerHTML = `<p>${computerWins}</p>`
          } else if ((playerSelection === computerSelection)) {
          	alert("TIE!!!");
          }
@@ -43,11 +45,11 @@ function singleRound(playerSelection, computerSelection) {
 function game(e) {
 	singleRound(event.target.value, getComputerChoice());
 		if (playerWins >= 3) {
-			alert("You Win the Game!");
+			alert("You Won the Game!");
 			gameReset();
 			return;
 		} else if (computerWins >= 3) {
-			alert("You Lose the Game!");
+			alert("You Lost the Game!");
 			gameReset();
 			return;
 		}
@@ -58,6 +60,8 @@ function gameReset() {
 	computerWins = 0;
     optionBtns.style.display = "none";
     beginBtn.style.display = "inline-block";
+    document.getElementById('player-score').innerHTML = `<p>0</p>`
+    document.getElementById('computer-score').innerHTML = `<p>0</p>`
 }
 
 function startGame() {
