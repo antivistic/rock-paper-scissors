@@ -1,6 +1,8 @@
 let playerSelection;
 let playerWins = 0;
 let computerWins = 0;
+const buttons = Array.from(document.querySelectorAll(".choiceBtn"));
+buttons.forEach(choiceBtn => choiceBtn.addEventListener('click', getPlayerChoice));
 
 function getComputerChoice() {
   let randNum = Math.random();
@@ -15,8 +17,9 @@ function getComputerChoice() {
   return result;
 }
 
-function getPlayerChoice() {
-	playerSelection = prompt("Rock, Paper, or Scissors?");
+function getPlayerChoice(e) {
+	playerSelection = e.target.value;
+	console.log(playerSelection);
 	return playerSelection.toLowerCase();
 }
 
