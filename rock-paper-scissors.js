@@ -1,30 +1,29 @@
 let playerSelection;
 let playerWins = 0;
 let computerWins = 0;
+let optionBtns = document.getElementById("choiceBox");
+let beginBtn = document.getElementById("startBtn");
 const buttons = Array.from(document.querySelectorAll(".choiceBtn"));
-buttons.forEach(choiceBtn => choiceBtn.addEventListener('click', getPlayerChoice));
+const strBtn = document.querySelector("#startBtn");
+strBtn.addEventListener('click', startGame);
+buttons.forEach(choiceBtn => choiceBtn.addEventListener('click', game));
 
 function getComputerChoice() {
-  let randNum = Math.random();
-  let result;
-  if (randNum <= (1/3)) {
-  	result = "rock";
-  } else if (randNum >= (2/3)) {
-  	result = "paper";
-  } else {
-  	result = "scissors";
-  }
-  return result;
-}
-
-function getPlayerChoice(e) {
-	playerSelection = e.target.value;
-	console.log(playerSelection);
-	return playerSelection.toLowerCase();
+	let randNum = Math.random();
+	let result;
+	if (randNum <= (1/3)) {
+		result = "rock";
+	} else if (randNum >= (2/3)) {
+		result = "paper";
+	} else {
+		result = "scissors";
+	}
+	return result;
 }
 
 function singleRound(playerSelection, computerSelection) {
-
+    console.log("Player: " + playerSelection);
+    console.log("Computer: " + computerSelection)
     if ((playerSelection === "rock" && computerSelection === "scissors")
          || (playerSelection === "paper" && computerSelection === "rock")
          || (playerSelection === "scissors" && computerSelection === "paper")
@@ -38,14 +37,11 @@ function singleRound(playerSelection, computerSelection) {
          	computerWins++;
          } else if ((playerSelection === computerSelection)) {
          	alert("TIE!!!");
-         } else {
-         	prompt("Please try again and enter only rock, paper, or scissors (NOT case-sensative.)");
          }
 }
 
-function game() {
-	for (let i = 0; i < 50; i++) {
-		singleRound(getPlayerChoice(), getComputerChoice());
+function game(e) {
+	singleRound(event.target.value, getComputerChoice());
 		if (playerWins >= 3) {
 			alert("You Win the Game!");
 			gameReset();
@@ -56,9 +52,15 @@ function game() {
 			return;
 		}
 	}
-}
 
 function gameReset() {
 	playerWins = 0;
 	computerWins = 0;
+    optionBtns.style.display = "none";
+    beginBtn.style.display = "inline-block";
+}
+
+function startGame() {
+	optionBtns.style.display = "inline-block";
+	beginBtn.style.display = "none";
 }
